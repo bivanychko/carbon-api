@@ -1,7 +1,7 @@
 import {Request, Response, NextFunction} from 'express';
 import {verify, decode} from 'jsonwebtoken';
 
-import {JwtPayload} from '../interaces';
+import {JwtPayload} from '../interfaces';
 import {loadJwtPublicKey} from '../common';
 import {UnAuthorizedError} from '../errors';
 

@@ -1,7 +1,7 @@
 import {sign} from 'jsonwebtoken';
 
 import {UserDataSource} from '../datasources';
-import {JwtPayload} from '../interaces';
+import {JwtPayload} from '../interfaces';
 import {loadJwtPrivateKey} from '../common';
 import { v4 as uuidv4 } from 'uuid';
 

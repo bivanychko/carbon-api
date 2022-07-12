@@ -12,7 +12,7 @@ import {
     AuthController,
 } from './controllers';
 import {ConfigManager} from './common';
-import {ServerConfig} from './interaces';
+import {ServerConfig} from './interfaces';
 
 export default class HttpServer {
     private readonly serverConfig: ServerConfig;

@@ -1,4 +1,4 @@
-import {User} from '../interaces';
+import {User} from '../interfaces';
 
 export class UserDataSource {
     private users: User[];
