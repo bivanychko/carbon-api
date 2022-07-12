@@ -3,16 +3,29 @@ import http, {Server} from 'http';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 
+import {
+    errorHandlerMiddleware,
+    authMiddleware,
+} from './middlewares';
+import {
+    CarbonController,
+    AuthController,
+} from './controllers';
 import {ConfigManager} from './common';
-import {CarbonController} from './controllers';
 import {ServerConfig} from './interaces';
 
 export default class HttpServer {
     private readonly serverConfig: ServerConfig;
     private readonly carbonController: CarbonController;
+    private readonly authController: AuthController;
 
-    constructor(carbonController: CarbonController, configManager: ConfigManager) {
+    constructor(
+        carbonController: CarbonController,
+        authController: AuthController,
+        configManager: ConfigManager
+    ) {
         this.carbonController = carbonController;
+        this.authController = authController;
         this.serverConfig = configManager.getServerConfig();
     }
 
@@ -24,7 +37,7 @@ export default class HttpServer {
 
         this._registerMiddleware(app);
         this._registerRoutes(app);
-        //this._registerErrorHandler(app);
+        this._registerErrorHandler(app);
 
         console.log(`Listening at port ${port}`);
         server.listen(port);
@@ -33,16 +46,18 @@ export default class HttpServer {
     }
 
     _registerRoutes(app: Express) {
-        app.get('/lol', this.carbonController.test.bind(this.carbonController));
+        app.get('/login', this.authController.login.bind(this.authController));
+        app.get('/test', this.carbonController.test.bind(this.carbonController));
     }
 
     _registerMiddleware(app: Express) {
         app.use(bodyParser.urlencoded({ extended: false }));
         app.use(express.json());
         app.use(cors());
+        app.use(authMiddleware);
     }
 
     _registerErrorHandler(app: Express) {
-        //app.use(errorHandler);
+        app.use(errorHandlerMiddleware);
     }
 }

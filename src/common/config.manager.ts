@@ -1,6 +1,6 @@
 require('dotenv').config()
-import { defaultPort } from './index';
-import { ServerConfig } from '../interaces';
+import {defaultPort} from './index';
+import {ServerConfig} from '../interaces';
 
 export class ConfigManager {
     getServerConfig(): ServerConfig {

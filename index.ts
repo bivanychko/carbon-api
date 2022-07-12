@@ -1,12 +1,20 @@
 import Server from './src/server';
 
-import { CarbonController } from './src/controllers';
-import { ConfigManager } from './src/common';
+import {CarbonController, AuthController} from './src/controllers';
+import {UserService} from './src/services';
+import {UserDataSource} from './src/datasources';
+import {ConfigManager} from './src/common';
 
-const carbonController = new CarbonController();
 const configManager = new ConfigManager();
 
-new Server(carbonController, configManager).start();
+const userDataSource = new UserDataSource([]);
+
+const userService = new UserService(userDataSource);
+
+const authController = new AuthController(userService);
+const carbonController = new CarbonController();
+
+new Server(carbonController, authController, configManager).start();
 
 process.on('unhandledRejection', (error: Error) => {
     console.error('Unhandled Promise Rejection was catched');
