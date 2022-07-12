@@ -3,6 +3,7 @@ import {verify, decode} from 'jsonwebtoken';
 
 import {JwtPayload} from '../interaces';
 import {loadJwtPublicKey} from '../common';
+import {UnAuthorizedError} from '../errors';
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const path = req.path;
@@ -11,11 +12,11 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     const authHeaderValue = req.header('Authorization');
 
     if (!authHeaderValue) {
-        throw new Error(`Authorization header not found.`);
+        throw new UnAuthorizedError(`Authorization header not found.`);
     }
 
     if (!authHeaderValue.startsWith('Bearer')) {
-        throw new Error(
+        throw new UnAuthorizedError(
             `Authorization header is not of type 'Bearer'.`,
         );
     }
@@ -26,7 +27,7 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     console.log(parts);
     console.log(parts.length);
     if (parts.length !== 3)
-        throw new Error(
+        throw new UnAuthorizedError(
             `Authorization header value must follow the pattern: 'Bearer xx.yy.zz' where xx.yy.zz is a valid JWT token.`,
         );
 
@@ -35,7 +36,7 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     try {
         verify(jwt, publicKey, {algorithms: ['RS256']});
     } catch (e) {
-        throw new Error('Invalid Jwt signature');
+        throw new UnAuthorizedError('Invalid Jwt signature');
     }
 
     const {id} = decode(jwt, {json: true}) as JwtPayload;
