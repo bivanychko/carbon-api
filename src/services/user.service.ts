@@ -2,8 +2,8 @@ import {sign} from 'jsonwebtoken';
 
 import {UserDataSource} from '../datasources';
 import {JwtPayload} from '../interfaces';
-import {loadJwtPrivateKey} from '../common';
-import { v4 as uuidv4 } from 'uuid';
+import {loadJwtPrivateKey} from '../helpers';
+import {NotFoundError} from '../errors';
 
 export class UserService {
     private readonly dataSource: UserDataSource;
@@ -12,13 +12,17 @@ export class UserService {
         this.dataSource = dataSource;
     }
 
-    login(): string {
-        const id = uuidv4();
-        const token = this.signToken({id});
+    login(userId: string): string {
+        const user = this.dataSource.getUser(userId);
+        if (user) {
+            return this.signToken({id: userId});
+        }
 
-        this.dataSource.addUser({id, token});
+        const availableUserIds = this.dataSource.getUserIds();
 
-        return token;
+        throw new NotFoundError(
+            `User with id ${userId} does not exist. Use one of following: ${availableUserIds.toString()}`
+        );
     }
 
     private signToken(payload: JwtPayload): string {

@@ -13,7 +13,7 @@ export class UserDataSource {
         return user ?? null;
     }
 
-    addUser(user: User): void {
-        this.users.push(user);
+    getUserIds(): string[] {
+        return this.users.map(user => user.id);
     }
 }

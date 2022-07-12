@@ -2,7 +2,7 @@ import {Request, Response, NextFunction} from 'express';
 import {verify, decode} from 'jsonwebtoken';
 
 import {JwtPayload} from '../interfaces';
-import {loadJwtPublicKey} from '../common';
+import {loadJwtPublicKey} from '../helpers';
 import {UnAuthorizedError} from '../errors';
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {

@@ -1,6 +1,7 @@
 import {Request, Response, NextFunction} from 'express';
 
 import {UserService} from '../services';
+import {validateLoginInput} from '../helpers';
 
 export class AuthController {
     private readonly userService: UserService;
@@ -11,7 +12,9 @@ export class AuthController {
 
     async login(req: Request, res: Response, next: NextFunction) {
         try {
-            const token = await this.userService.login();
+            validateLoginInput(req.body);
+
+            const token = await this.userService.login(req.body.id);
 
             res.send(token);
         } catch(e) {

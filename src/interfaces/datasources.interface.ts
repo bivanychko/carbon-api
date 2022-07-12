@@ -9,5 +9,4 @@ export interface Carbon {
 
 export interface User {
     id: string;
-    token: string;
 }

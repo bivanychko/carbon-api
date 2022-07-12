@@ -7,7 +7,7 @@ import {ConfigManager} from './src/common';
 
 const configManager = new ConfigManager();
 
-const userDataSource = new UserDataSource([]);
+const userDataSource = new UserDataSource([{id: '2bb2cdfc-891d-4cb6-b604-4e39d8d3a24b'}]);
 
 const userService = new UserService(userDataSource);
 
