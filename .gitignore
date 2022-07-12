@@ -1,0 +1,10 @@
+# IDEA
+.idea
+
+# NPM
+node_modules/
+*.log
+npm-debug.log*
+
+# Transpiled JavaScript files from Typescript
+/dist
