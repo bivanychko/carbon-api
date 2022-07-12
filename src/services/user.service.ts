@@ -6,19 +6,19 @@ import {loadJwtPrivateKey} from '../helpers';
 import {NotFoundError} from '../errors';
 
 export class UserService {
-    private readonly dataSource: UserDataSource;
+    private readonly usersDataSource: UserDataSource;
 
-    constructor(dataSource: UserDataSource) {
-        this.dataSource = dataSource;
+    constructor(usersDataSource: UserDataSource) {
+        this.usersDataSource = usersDataSource;
     }
 
     login(userId: string): string {
-        const user = this.dataSource.getUser(userId);
+        const user = this.usersDataSource.getUser(userId);
         if (user) {
             return this.signToken({id: userId});
         }
 
-        const availableUserIds = this.dataSource.getUserIds();
+        const availableUserIds = this.usersDataSource.getUserIds();
 
         throw new NotFoundError(
             `User with id ${userId} does not exist. Use one of following: ${availableUserIds.toString()}`

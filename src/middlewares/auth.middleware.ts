@@ -24,8 +24,6 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     const jwt = authHeaderValue.split('Bearer ')[1];
 
     const parts = jwt ? jwt.split('.') : '';
-    console.log(parts);
-    console.log(parts.length);
     if (parts.length !== 3)
         throw new UnAuthorizedError(
             `Authorization header value must follow the pattern: 'Bearer xx.yy.zz' where xx.yy.zz is a valid JWT token.`,

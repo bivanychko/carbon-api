@@ -47,7 +47,8 @@ export default class HttpServer {
 
     _registerRoutes(app: Express) {
         app.post('/login', this.authController.login.bind(this.authController));
-        app.get('/test', this.carbonController.test.bind(this.carbonController));
+        app.get('/carbons', this.carbonController.getCarbons.bind(this.carbonController));
+        app.get('/carbons/my', this.carbonController.getMyCarbons.bind(this.carbonController));
     }
 
     _registerMiddleware(app: Express) {

@@ -10,13 +10,13 @@ export class AuthController {
         this.userService = userService;
     }
 
-    async login(req: Request, res: Response, next: NextFunction) {
+    login(req: Request, res: Response, next: NextFunction) {
         try {
             validateLoginInput(req.body);
 
-            const token = await this.userService.login(req.body.id);
+            const response = this.userService.login(req.body.id);
 
-            res.send(token);
+            res.send(response);
         } catch(e) {
             next(e);
         }
