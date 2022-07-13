@@ -1,4 +1,5 @@
 import {Carbon} from '../interfaces';
+import {carbonStatuses} from '../common';
 
 export class CarbonDataSource {
     private carbons: Carbon[];
@@ -18,7 +19,7 @@ export class CarbonDataSource {
     transferCarbons(carbonsToTransfer: Carbon[], toUserId: string): void {
         carbonsToTransfer.forEach(carbon => {
             carbon.owner = toUserId;
-            carbon.status = 'transferred';
+            carbon.status = carbonStatuses.transferred;
         });
     }
 }

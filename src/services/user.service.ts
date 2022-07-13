@@ -4,6 +4,7 @@ import {UserDataSource} from '../datasources';
 import {JwtPayload} from '../interfaces';
 import {loadJwtPrivateKey} from '../helpers';
 import {NotFoundError} from '../errors';
+import {jwtPrivateKeyPath, verifyJwtSignatureAlgorithm} from '../common';
 
 export class UserService {
     private readonly usersDataSource: UserDataSource;
@@ -26,8 +27,8 @@ export class UserService {
     }
 
     private signToken(payload: JwtPayload): string {
-        const privateKey = loadJwtPrivateKey(`../../keys/jwtRS256.key`);
+        const privateKey = loadJwtPrivateKey(jwtPrivateKeyPath);
 
-        return `Bearer ${sign(payload, privateKey, {algorithm: 'RS256'})}`;
+        return `Bearer ${sign(payload, privateKey, {algorithm: verifyJwtSignatureAlgorithm})}`;
     }
 }

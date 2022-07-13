@@ -4,6 +4,7 @@ import {verify, decode} from 'jsonwebtoken';
 import {JwtPayload} from '../interfaces';
 import {loadJwtPublicKey} from '../helpers';
 import {UnAuthorizedError} from '../errors';
+import {jwtPublicKeyPath, verifyJwtSignatureAlgorithm} from '../common';
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const path = req.path;
@@ -29,10 +30,10 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
             `Authorization header value must follow the pattern: 'Bearer xx.yy.zz' where xx.yy.zz is a valid JWT token.`,
         );
 
-    const publicKey = loadJwtPublicKey('../../keys/jwtRS256.pub');
+    const publicKey = loadJwtPublicKey(jwtPublicKeyPath);
 
     try {
-        verify(jwt, publicKey, {algorithms: ['RS256']});
+        verify(jwt, publicKey, {algorithms: [verifyJwtSignatureAlgorithm]});
     } catch (e) {
         throw new UnAuthorizedError('Invalid Jwt signature');
     }

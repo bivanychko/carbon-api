@@ -1,6 +1,7 @@
 import {CarbonDataSource, UserDataSource} from '../datasources';
 import {Carbon} from '../interfaces';
 import {BadRequestError, NotFoundError} from '../errors';
+import {carbonStatuses} from '../common';
 
 export class CarbonService {
     private readonly carbonDataSource: CarbonDataSource;
@@ -12,7 +13,7 @@ export class CarbonService {
     }
 
     getAvailableCarbons(): Carbon[]  {
-        return this.carbonDataSource.getByStatus('available');
+        return this.carbonDataSource.getByStatus(carbonStatuses.available);
     }
 
     getCarbonsById(id: string): Carbon[] {
