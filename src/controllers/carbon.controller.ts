@@ -28,4 +28,17 @@ export class CarbonController {
             next(e);
         }
     }
+
+    transferMyCarbons(req: Request, res: Response, next: NextFunction) {
+        try {
+            const fromUser = res.locals.userId;
+            const toUser = req.params.userId;
+
+            this.carbonService.transferMyCarbons(fromUser, toUser);
+
+            res.send();
+        } catch(e) {
+            next(e);
+        }
+    }
 }

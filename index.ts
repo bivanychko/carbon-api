@@ -7,7 +7,10 @@ import {ConfigManager} from './src/common';
 
 const configManager = new ConfigManager();
 
-const userDataSource = new UserDataSource([{id: '2bb2cdfc-891d-4cb6-b604-4e39d8d3a24b'}]);
+const userDataSource = new UserDataSource([
+    {id: '2bb2cdfc-891d-4cb6-b604-4e39d8d3a24b'},
+    {id: 'bf87e12d-a67c-4764-8e02-4196cffec364'},
+]);
 const carbonDataSource = new CarbonDataSource([
     {
         id: '1',

@@ -49,6 +49,7 @@ export default class HttpServer {
         app.post('/login', this.authController.login.bind(this.authController));
         app.get('/carbons', this.carbonController.getCarbons.bind(this.carbonController));
         app.get('/carbons/my', this.carbonController.getMyCarbons.bind(this.carbonController));
+        app.put('/carbons/:userId/transfer', this.carbonController.transferMyCarbons.bind(this.carbonController));
     }
 
     _registerMiddleware(app: Express) {

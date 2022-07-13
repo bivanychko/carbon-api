@@ -1,6 +1,6 @@
 import {CarbonDataSource, UserDataSource} from '../datasources';
 import {Carbon} from '../interfaces';
-import {NotFoundError} from '../errors';
+import {BadRequestError, NotFoundError} from '../errors';
 
 export class CarbonService {
     private readonly carbonDataSource: CarbonDataSource;
@@ -20,5 +20,15 @@ export class CarbonService {
         if (!user) throw new NotFoundError(`User with id ${id} does not exist`);
 
         return this.carbonDataSource.getByOwner(id);
+    }
+
+    transferMyCarbons(fromUserId: string, toUserId: string): void {
+        const user = this.userDataSource.getUser(toUserId);
+        if (!user) throw new NotFoundError(`User you want to transfer carbons does not exist`);
+
+        const myCarbons = this.carbonDataSource.getByOwner(fromUserId);
+        if (!myCarbons.length) throw new BadRequestError('You do not have any carbons to transfer');
+
+        this.carbonDataSource.transferCarbons(myCarbons, toUserId);
     }
 }

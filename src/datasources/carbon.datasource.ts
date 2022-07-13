@@ -14,4 +14,11 @@ export class CarbonDataSource {
     getByOwner(id: string): Carbon[] {
         return this.carbons.filter(carbon => carbon.owner === id);
     }
+
+    transferCarbons(carbonsToTransfer: Carbon[], toUserId: string): void {
+        carbonsToTransfer.forEach(carbon => {
+            carbon.owner = toUserId;
+            carbon.status = 'transferred';
+        });
+    }
 }
