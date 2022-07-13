@@ -1,0 +1,23 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Carbon API",
+    "description": "Carbon Certificates application API"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "auth",
+      "description": "authorization"
+    },
+    {
+      "name": "carbons",
+      "description": "carbons"
+    }
+  ],
+  "schemes": ["http", "https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"]
+}

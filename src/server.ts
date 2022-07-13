@@ -2,6 +2,7 @@ import express, {Express} from 'express';
 import http, {Server} from 'http';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import swaggerUi, {JsonObject} from 'swagger-ui-express';
 
 import {
     errorHandlerMiddleware,
@@ -13,6 +14,7 @@ import {
 } from './controllers';
 import {ConfigManager} from './common';
 import {ServerConfig} from './interfaces';
+import swagger from '../docs/swagger.json';
 
 export default class HttpServer {
     private readonly serverConfig: ServerConfig;
@@ -56,6 +58,7 @@ export default class HttpServer {
         app.use(bodyParser.urlencoded({ extended: false }));
         app.use(express.json());
         app.use(cors());
+        app.use('/docs', swaggerUi.serve, swaggerUi.setup(swagger as JsonObject));
         app.use(authMiddleware);
     }
 

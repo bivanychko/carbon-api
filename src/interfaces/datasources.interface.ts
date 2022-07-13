@@ -1,4 +1,4 @@
-type CarbonStatus = 'available' | 'owned' | 'transferred';
+export type CarbonStatus = 'available' | 'owned' | 'transferred';
 
 export interface Carbon {
     id: string;
