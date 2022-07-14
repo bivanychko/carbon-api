@@ -23,7 +23,7 @@ describe('AuthController', () => {
                 .post('/login')
                 .expect(400)
 
-           expect(response.body.message).toBe('"id" is required');
+            expect(response.body.message).toBe('"id" is required');
         });
 
         test('should return 404 NotFound when user does not exist', async () => {
@@ -55,7 +55,7 @@ describe('AuthController', () => {
         test('should return 401 Unauthorized when Bearer is missed in auth header', async () => {
             const response = await request(app)
                 .get('/carbons')
-                .set({ 'Authorization': 'test'})
+                .set({'Authorization': 'test'})
                 .expect(401);
 
             expect(response.body.message).toBe("Authorization header is not of type 'Bearer'.");
@@ -64,7 +64,7 @@ describe('AuthController', () => {
         test('should return 401 Unauthorized when auth header does not match jwt pattern', async () => {
             const response = await request(app)
                 .get('/carbons')
-                .set({ 'Authorization': 'Bearer test'})
+                .set({'Authorization': 'Bearer test'})
                 .expect(401);
 
             expect(response.body.message).toBe("Authorization header value must follow the pattern: 'Bearer xx.yy.zz' where xx.yy.zz is a valid JWT token.");
@@ -73,7 +73,7 @@ describe('AuthController', () => {
         test('should return 401 Unauthorized when signature is different', async () => {
             const response = await request(app)
                 .get('/carbons')
-                .set({ 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dnZWRJbkFzIjoiYWRtaW4iLCJpYXQiOjE0MjI3Nzk2Mzh9.gzSraSYS8EXBxLN_oWnFSRgCzcmJmMjLiuyu5CSpyHI'})
+                .set({'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dnZWRJbkFzIjoiYWRtaW4iLCJpYXQiOjE0MjI3Nzk2Mzh9.gzSraSYS8EXBxLN_oWnFSRgCzcmJmMjLiuyu5CSpyHI'})
                 .expect(401);
 
             expect(response.body.message).toBe('Invalid Jwt signature');

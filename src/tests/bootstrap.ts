@@ -1,7 +1,7 @@
 import Server from '../server';
-import {CarbonController, AuthController} from '../controllers';
-import {UserService, CarbonService} from '../services';
-import {UserDataSource, CarbonDataSource} from '../datasources';
+import {AuthController, CarbonController} from '../controllers';
+import {CarbonService, UserService} from '../services';
+import {CarbonDataSource, UserDataSource} from '../datasources';
 import {ConfigManager} from '../common';
 import {ServerConfiguration} from '../interfaces';
 

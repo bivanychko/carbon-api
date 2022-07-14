@@ -1,9 +1,5 @@
-import {Request, Response, NextFunction} from 'express';
-import {
-    UnAuthorizedError,
-    NotFoundError,
-    BadRequestError,
-} from '../errors';
+import {NextFunction, Request, Response} from 'express';
+import {BadRequestError, NotFoundError, UnAuthorizedError,} from '../errors';
 
 export const errorHandlerMiddleware = (error: Error, req: Request, res: Response, next: NextFunction) => {
     console.error(`Error has occurred: ${error}`);

@@ -1,5 +1,5 @@
-import {Request, Response, NextFunction} from 'express';
-import {verify, decode} from 'jsonwebtoken';
+import {NextFunction, Request, Response} from 'express';
+import {decode, verify} from 'jsonwebtoken';
 
 import {JwtPayload} from '../interfaces';
 import {loadJwtPublicKey} from '../helpers';

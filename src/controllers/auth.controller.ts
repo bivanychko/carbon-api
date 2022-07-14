@@ -1,4 +1,4 @@
-import {Request, Response, NextFunction} from 'express';
+import {NextFunction, Request, Response} from 'express';
 
 import {UserService} from '../services';
 import {validateLoginInput} from '../helpers';
@@ -17,7 +17,7 @@ export class AuthController {
             const response = this.userService.login(req.body.id);
 
             res.send(response);
-        } catch(e) {
+        } catch (e) {
             next(e);
         }
     }

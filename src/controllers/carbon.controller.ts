@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import {NextFunction, Request, Response} from 'express';
 
 import {CarbonService} from '../services';
 
@@ -14,7 +14,7 @@ export class CarbonController {
             const response = this.carbonService.getAvailableCarbons();
 
             res.send(response);
-        } catch(e) {
+        } catch (e) {
             next(e);
         }
     }
@@ -24,7 +24,7 @@ export class CarbonController {
             const response = this.carbonService.getCarbonsById(res.locals.userId);
 
             res.send(response);
-        } catch(e) {
+        } catch (e) {
             next(e);
         }
     }
@@ -37,7 +37,7 @@ export class CarbonController {
             this.carbonService.transferMyCarbons(fromUser, toUser);
 
             res.status(204).send();
-        } catch(e) {
+        } catch (e) {
             next(e);
         }
     }

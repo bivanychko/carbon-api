@@ -12,7 +12,7 @@ export class CarbonService {
         this.userDataSource = userDataSource;
     }
 
-    getAvailableCarbons(): Carbon[]  {
+    getAvailableCarbons(): Carbon[] {
         return this.carbonDataSource.getByStatus(carbonStatuses.available);
     }
 

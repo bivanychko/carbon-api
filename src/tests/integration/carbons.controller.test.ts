@@ -30,7 +30,7 @@ describe('CarbonController', () => {
                 .set({'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzZTg5N2ZmLTgzNzYtNGJjZC1iZWRlLTUxZTRjMWIxMDc2MiIsImlhdCI6MTY1NzgwNjEzN30.fccf5nEuf03piIFnaLJldTs8lBX5lAZj5mt-up6A9CFDna7P-jXBhzV2pkvDFt1TPBSUPjin4pBYkWMvKsjaAhV5z4tZ8Md_lCxIKxVd6W7Zj3OQVaEdzDffkRhcansRi7bdXFU1ZQFofupfEAv2SaPWTWEr4pLgd-eOT-_9TAo4ItT7XOUeEvGZZHQ8LxrmN-KQntk2bi9Xj0hpEbm_TmZHjXlK0M6-ax5BXzi0iXCO-x0TjGJplX6cSYyeTt5n2ax9-bvwAlLWi4rNNKbMpOz5w2RymHlsM4WDNaBQ-QiTeA6gG3Ly1J5I5rzIY8isbgQu77HOfN7ugExI90qWP9CZtL8I8uRvyWWWCNP-CCIDsdo9YfwsdVYH2OYmmBVzRFGSwhJ0C2K5DjzzTBa5UJMoZJX6PhNnb-9uyVRzEvfXaXLOvrfXN2xDqm5xH6P_BcBYAjfFipkRXHtW471WI94Q6G7phMvYvI6dEhlNUe3q7LgFcNQmJzvt3F7q4bavRYcG1pAA4Q4tNw4MZuprAUPQzCWzgiM8XpTAij2OG-SvZCYPW8KO-04kuhNRjflHGooKpQY7n4OjySWUV0u6bemvIsxlt9Q7guYThEi_HOeRlH4A9Gm8V5lcYsP2_Fh1rAfHAsF6BKNvIFzArzDuZPJXFFxRXAVAqf-GlnsgzbM'})
                 .expect(200);
 
-            expect(response.body).toStrictEqual( [{ id: '3', country: 'Spain', status: 'available', owner: null }]);
+            expect(response.body).toStrictEqual([{id: '3', country: 'Spain', status: 'available', owner: null}]);
         });
     });
 
@@ -47,7 +47,7 @@ describe('CarbonController', () => {
                 .set({'Authorization': 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUzZTg5N2ZmLTgzNzYtNGJjZC1iZWRlLTUxZTRjMWIxMDc2MiIsImlhdCI6MTY1NzgwNjEzN30.fccf5nEuf03piIFnaLJldTs8lBX5lAZj5mt-up6A9CFDna7P-jXBhzV2pkvDFt1TPBSUPjin4pBYkWMvKsjaAhV5z4tZ8Md_lCxIKxVd6W7Zj3OQVaEdzDffkRhcansRi7bdXFU1ZQFofupfEAv2SaPWTWEr4pLgd-eOT-_9TAo4ItT7XOUeEvGZZHQ8LxrmN-KQntk2bi9Xj0hpEbm_TmZHjXlK0M6-ax5BXzi0iXCO-x0TjGJplX6cSYyeTt5n2ax9-bvwAlLWi4rNNKbMpOz5w2RymHlsM4WDNaBQ-QiTeA6gG3Ly1J5I5rzIY8isbgQu77HOfN7ugExI90qWP9CZtL8I8uRvyWWWCNP-CCIDsdo9YfwsdVYH2OYmmBVzRFGSwhJ0C2K5DjzzTBa5UJMoZJX6PhNnb-9uyVRzEvfXaXLOvrfXN2xDqm5xH6P_BcBYAjfFipkRXHtW471WI94Q6G7phMvYvI6dEhlNUe3q7LgFcNQmJzvt3F7q4bavRYcG1pAA4Q4tNw4MZuprAUPQzCWzgiM8XpTAij2OG-SvZCYPW8KO-04kuhNRjflHGooKpQY7n4OjySWUV0u6bemvIsxlt9Q7guYThEi_HOeRlH4A9Gm8V5lcYsP2_Fh1rAfHAsF6BKNvIFzArzDuZPJXFFxRXAVAqf-GlnsgzbM'})
                 .expect(200);
 
-            expect(response.body).toStrictEqual( [
+            expect(response.body).toStrictEqual([
                 {
                     id: '1',
                     country: 'Ukraine',

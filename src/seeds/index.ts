@@ -1,4 +1,4 @@
-import {User, Carbon} from '../interfaces';
+import {Carbon, User} from '../interfaces';
 
 export const users: User[] = [
     //With certificates
