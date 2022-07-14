@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "a90a6b98-0d9d-4d1d-ba3c-ecac3cae6c41",
+		"name": "Carbon-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get swagger",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/docs",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"docs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"2bb2cdfc-891d-4cb6-b604-4e39d8d3a24b\"   \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get available carbons",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiYjJjZGZjLTg5MWQtNGNiNi1iNjA0LTRlMzlkOGQzYTI0YiIsImlhdCI6MTY1Nzc5MDg0M30.AZaIt7w0F9qLbA5vx1q6awZbX9y2drS9vqotwIGyOFgYd9iw_Ub6rhrDd6Pilr0bndC6lVkrNOke7Dt7w9fQovWNejB9l614Ed7cKRcgbcPfJ8qiB2Io6qrQhAQCRxvk69P09pqujMc2aBip1pzvcI2jRSXrDAfidq6adXG8DjBqWkB8Bn_2F0CxNJ6SuV1K8Ujp9siohOSYb87Te925-4fJ15gg8m6uKvFfjhddXTMBbtMK8gHx0i0KukUWu_Z-U7ItB256KI0ZtZJUCPpCoV0sGyCcr8zpmXsKk94bkbj63NP1w8frlKNQSTG61WCFZuwVIcmPBoTklBheeC0-7EYt4IDYmxHKuQ9p8CNYRX1PwIQhRrvR1RLBs9nQdmNpc3dI_hJksMKaGDk2B7r19R0c9t5Wqz-Jx7bH0Qk72-s7ak3n_G3cFyKXfjc8DemV4pUIorj__VjHToqWjxIGR59ta_s6EDCnUhun2BX4tlMTDD8wof-C3id6AwArrzTFf4Z49Fm99IguJSu3ruk4hPTs7tPCSkVh0fecZOSb_bnIUEqg5-TDNc5Z28IF2x2cu8eZmG3LF32IN0yXqmhFYY08emBEt2MbsOEy4VBJ7_FyREvq6usg6huH-uIChX5xUCCrJ3Lk72QTIbV3mP93cMgUtjGIz7kpLhdtUVcKhRE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/carbons",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"carbons"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get my carbons",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiYjJjZGZjLTg5MWQtNGNiNi1iNjA0LTRlMzlkOGQzYTI0YiIsImlhdCI6MTY1Nzc5MDg0M30.AZaIt7w0F9qLbA5vx1q6awZbX9y2drS9vqotwIGyOFgYd9iw_Ub6rhrDd6Pilr0bndC6lVkrNOke7Dt7w9fQovWNejB9l614Ed7cKRcgbcPfJ8qiB2Io6qrQhAQCRxvk69P09pqujMc2aBip1pzvcI2jRSXrDAfidq6adXG8DjBqWkB8Bn_2F0CxNJ6SuV1K8Ujp9siohOSYb87Te925-4fJ15gg8m6uKvFfjhddXTMBbtMK8gHx0i0KukUWu_Z-U7ItB256KI0ZtZJUCPpCoV0sGyCcr8zpmXsKk94bkbj63NP1w8frlKNQSTG61WCFZuwVIcmPBoTklBheeC0-7EYt4IDYmxHKuQ9p8CNYRX1PwIQhRrvR1RLBs9nQdmNpc3dI_hJksMKaGDk2B7r19R0c9t5Wqz-Jx7bH0Qk72-s7ak3n_G3cFyKXfjc8DemV4pUIorj__VjHToqWjxIGR59ta_s6EDCnUhun2BX4tlMTDD8wof-C3id6AwArrzTFf4Z49Fm99IguJSu3ruk4hPTs7tPCSkVh0fecZOSb_bnIUEqg5-TDNc5Z28IF2x2cu8eZmG3LF32IN0yXqmhFYY08emBEt2MbsOEy4VBJ7_FyREvq6usg6huH-uIChX5xUCCrJ3Lk72QTIbV3mP93cMgUtjGIz7kpLhdtUVcKhRE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/carbons/my",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"carbons",
+						"my"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer carbons",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJiYjJjZGZjLTg5MWQtNGNiNi1iNjA0LTRlMzlkOGQzYTI0YiIsImlhdCI6MTY1Nzc5MDg0M30.AZaIt7w0F9qLbA5vx1q6awZbX9y2drS9vqotwIGyOFgYd9iw_Ub6rhrDd6Pilr0bndC6lVkrNOke7Dt7w9fQovWNejB9l614Ed7cKRcgbcPfJ8qiB2Io6qrQhAQCRxvk69P09pqujMc2aBip1pzvcI2jRSXrDAfidq6adXG8DjBqWkB8Bn_2F0CxNJ6SuV1K8Ujp9siohOSYb87Te925-4fJ15gg8m6uKvFfjhddXTMBbtMK8gHx0i0KukUWu_Z-U7ItB256KI0ZtZJUCPpCoV0sGyCcr8zpmXsKk94bkbj63NP1w8frlKNQSTG61WCFZuwVIcmPBoTklBheeC0-7EYt4IDYmxHKuQ9p8CNYRX1PwIQhRrvR1RLBs9nQdmNpc3dI_hJksMKaGDk2B7r19R0c9t5Wqz-Jx7bH0Qk72-s7ak3n_G3cFyKXfjc8DemV4pUIorj__VjHToqWjxIGR59ta_s6EDCnUhun2BX4tlMTDD8wof-C3id6AwArrzTFf4Z49Fm99IguJSu3ruk4hPTs7tPCSkVh0fecZOSb_bnIUEqg5-TDNc5Z28IF2x2cu8eZmG3LF32IN0yXqmhFYY08emBEt2MbsOEy4VBJ7_FyREvq6usg6huH-uIChX5xUCCrJ3Lk72QTIbV3mP93cMgUtjGIz7kpLhdtUVcKhRE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/carbons/bf87e12d-a67c-4764-8e02-4196cffec364/transfer",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"carbons",
+						"bf87e12d-a67c-4764-8e02-4196cffec364",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
