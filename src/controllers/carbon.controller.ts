@@ -36,7 +36,7 @@ export class CarbonController {
 
             this.carbonService.transferMyCarbons(fromUser, toUser);
 
-            res.send();
+            res.status(204);
         } catch(e) {
             next(e);
         }

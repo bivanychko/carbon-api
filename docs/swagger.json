@@ -6,7 +6,7 @@
     "description": "Carbon Certificates application API"
   },
   "host": "localhost:3000",
-  "basePath": "/",
+  "basePath": "",
   "tags": [
     {
       "name": "auth",
@@ -18,6 +18,215 @@
     }
   ],
   "schemes": ["http", "https"],
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
   "consumes": ["application/json"],
-  "produces": ["application/json"]
+  "produces": ["application/json"],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": ["auth"],
+        "summary": "Authorize into system",
+        "security": {
+          "Bearer": []
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "required": ["id"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "bf87e12d-a67c-4764-8e02-4196cffec364"
+                }
+              }
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": "application/json",
+            "schema": {
+              "type": "string",
+              "example": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJmODdlMTJkLWE2N2MtNDc2NC04ZTAyLTQxOTZjZmZlYzM2NCIsImlhdCI6MTY1Nzc4OTM0OH0.GyDYch3-FtpdPYpk1xHvmPSdwRFoPsS7STEcwFQcKMKXJUF1vAYoNJ0yCdXr0v8QcuNW_rrWszs3pmsImTpiRilmfwrppPUE4etnIVAR3nwETU5aLi3ldtrBPPWN427OPO21xOcmGkYNIoKxTTtF2rpclIV26dp1k7e-BC7k7t4u2WqXwrXnMWXv83CMeIq6qbvVQD3eklbp88V5Sk2_cRwHgSXdoKG7JF9xs7JLWNSkltqas-67F9I8nBawy8S3QbXceTy3NSuroNSztggby2NStSYWGc2teMk1x9MOZgliQhf6Jza1E1Fgeo5qJs2YesP8TUN-Sy77pUrIEpv3w56gMLznjBWXyeKG56JI3f86t-Zv_UXi3_-bULIyT8ShAj23clum80Yu8K_0ogAgSFlkVuHFbCS1bNPTkz-V1wWC_NKqT1c7dD0j9P-akO2NYufNHM4TBrPejOK4FnpS0LVt9zhp4N5plsXSM_gVPUEjReZMcwLKtRJyol3r2Xt9icOur3AdAbF6K9CcEhnSE-VjkcTtiqa-dcD3qkaEhnrRBQH3sDNA7ZszFqedFUx9XMhYci08lPeMMYQME2C6MEww974o3L5GsJ_tthi6N61oiFmeMkGEjUhqD8YEIibWesDO2vZPzYFYCfKIycgM0-OfncM8zAiKbz80T69UlDY"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/carbons": {
+      "get": {
+        "tags": ["carbons"],
+        "summary": "Get available carbons",
+        "security": {
+          "Bearer": []
+        },
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization header",
+            "schema": {
+              "type": "string",
+              "example": "Bearer <jwt>"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": "application/json",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "country", "status", "owner"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "country": {
+                    "type": "string",
+                    "example": "Spain"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["available", "owned", "transferred"],
+                    "example": "available"
+                  },
+                  "owner": {
+                    "type": "null",
+                    "example": null
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/carbons/my": {
+      "get": {
+        "tags": ["carbons"],
+        "summary": "Get my carbons",
+        "security": {
+          "Bearer": []
+        },
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization header",
+            "schema": {
+              "type": "string",
+              "example": "Bearer <jwt>"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": "application/json",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "country", "status", "owner"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "country": {
+                    "type": "string",
+                    "example": "Spain"
+                  },
+                  "status": {
+                    "type": "string",
+                    "enum": ["available", "owned", "transferred"],
+                    "example": "owned"
+                  },
+                  "owner": {
+                    "type": "string",
+                    "format": "uuid",
+                    "example": "2bb2cdfc-891d-4cb6-b604-4e39d8d3a24b"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/carbons/{user_id}/transfer": {
+      "put": {
+        "tags": ["carbons"],
+        "summary": "Transfer my carbons",
+        "security": {
+          "Bearer": []
+        },
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization header",
+            "schema": {
+              "type": "string",
+              "example": "Bearer <jwt>"
+            },
+            "required": true
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "Id of user you want to transfer carbons",
+            "schema": {
+              "type": "string",
+              "example": "bf87e12d-a67c-4764-8e02-4196cffec364"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  }
 }
