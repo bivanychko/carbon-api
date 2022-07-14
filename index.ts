@@ -4,33 +4,12 @@ import {CarbonController, AuthController} from './src/controllers';
 import {UserService, CarbonService} from './src/services';
 import {UserDataSource, CarbonDataSource} from './src/datasources';
 import {ConfigManager} from './src/common';
+import {users, carbons} from './src/seeds';
 
 const configManager = new ConfigManager();
 
-const userDataSource = new UserDataSource([
-    {id: '2bb2cdfc-891d-4cb6-b604-4e39d8d3a24b'},
-    {id: 'bf87e12d-a67c-4764-8e02-4196cffec364'},
-]);
-const carbonDataSource = new CarbonDataSource([
-    {
-        id: '1',
-        country: 'Ukraine',
-        status: 'owned',
-        owner: '2bb2cdfc-891d-4cb6-b604-4e39d8d3a24b',
-    },
-    {
-        id: '2',
-        country: 'Ukraine',
-        status: 'owned',
-        owner: '2bb2cdfc-891d-4cb6-b604-4e39d8d3a24b',
-    },
-    {
-        id: '3',
-        country: 'Spain',
-        status: 'available',
-        owner: null,
-    },
-]);
+const userDataSource = new UserDataSource(users);
+const carbonDataSource = new CarbonDataSource(carbons);
 
 const userService = new UserService(userDataSource);
 const carbonService = new CarbonService(carbonDataSource, userDataSource);
