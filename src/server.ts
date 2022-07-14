@@ -13,7 +13,7 @@ import {
     AuthController,
 } from './controllers';
 import {ConfigManager} from './common';
-import {ServerConfig} from './interfaces';
+import {ServerConfig, ServerConfiguration} from './interfaces';
 import swagger from '../docs/swagger.json';
 
 export default class HttpServer {
@@ -31,7 +31,7 @@ export default class HttpServer {
         this.serverConfig = configManager.getServerConfig();
     }
 
-    start(): Server {
+    start(): ServerConfiguration {
         const {port} = this.serverConfig;
 
         const app = express();
@@ -44,7 +44,7 @@ export default class HttpServer {
         console.log(`Listening at port ${port}`);
         server.listen(port);
 
-        return server;
+        return {server, app};
     }
 
     _registerRoutes(app: Express) {
