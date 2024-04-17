@@ -1,25 +1,25 @@
-import {Carbon, CarbonStatus} from '../interfaces';
-import {carbonStatuses} from '../common';
+import { carbonStatuses } from "../common";
+import { Carbon, CarbonStatus } from "../interfaces";
 
 export class CarbonDataSource {
-    private carbons: Carbon[];
+  private carbons: Carbon[];
 
-    constructor(carbons: Carbon[]) {
-        this.carbons = carbons;
-    }
+  constructor(carbons: Carbon[]) {
+    this.carbons = carbons;
+  }
 
-    getByStatus(status: string): Carbon[] {
-        return this.carbons.filter(carbon => carbon.status === status);
-    }
+  getByStatus(status: string): Carbon[] {
+    return this.carbons.filter(carbon => carbon.status === status);
+  }
 
-    getByOwner(id: string): Carbon[] {
-        return this.carbons.filter(carbon => carbon.owner === id);
-    }
+  getByOwner(id: string): Carbon[] {
+    return this.carbons.filter(carbon => carbon.owner === id);
+  }
 
-    transferCarbons(carbonsToTransfer: Carbon[], toUserId: string): void {
-        carbonsToTransfer.forEach(carbon => {
-            carbon.owner = toUserId;
-            carbon.status = carbonStatuses.transferred as CarbonStatus;
-        });
-    }
+  transferCarbons(carbonsToTransfer: Carbon[], toUserId: string): void {
+    carbonsToTransfer.forEach(carbon => {
+      carbon.owner = toUserId;
+      carbon.status = carbonStatuses.transferred as CarbonStatus;
+    });
+  }
 }

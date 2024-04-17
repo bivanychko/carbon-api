@@ -1,15 +1,15 @@
-import {Express} from 'express';
-import {Server} from 'http';
+import { Express } from "express";
+import { Server } from "http";
 
 export interface ServerConfiguration {
-    server: Server;
-    app: Express;
+  server: Server;
+  app: Express;
 }
 
 export interface ServerConfig {
-    port: number;
+  port: number;
 }
 
 export interface JwtPayload {
-    id: string;
+  id: string;
 }

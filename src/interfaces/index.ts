@@ -1,2 +1,2 @@
-export * from './common.interface';
-export * from './datasources.interface';
+export * from "./common.interface";
+export * from "./datasources.interface";

@@ -1,12 +1,12 @@
-import * as Joi from 'joi';
+import * as Joi from "joi";
 
-import {BadRequestError} from '../errors';
+import { BadRequestError } from "../errors";
 
 export const validateLoginInput = (input: unknown): void => {
-    const schema = Joi.object({
-        id: Joi.string().uuid().required(),
-    }).required();
+  const schema = Joi.object({
+    id: Joi.string().uuid().required(),
+  }).required();
 
-    const {error} = schema.validate(input, {allowUnknown: true});
-    if (error) throw new BadRequestError(error.message);
-}
+  const { error } = schema.validate(input, { allowUnknown: true });
+  if (error) throw new BadRequestError(error.message);
+};
